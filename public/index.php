@@ -10,12 +10,13 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 require __DIR__ . '/../vendor/autoload.php';
-
-session_start();
-
 // Instantiate the app
 $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\App($settings);
+
+//Start a session : For future implementations. 
+$app->add(new \RKA\SessionMiddleware(['name' => 'request']));
+
 
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
