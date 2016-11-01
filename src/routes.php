@@ -180,7 +180,9 @@ $app->get('/map/test4/{query}', function ($request, $response)  {
 
 //_________ Endpoints Routes ____________________//
 
-$app->get('/map/search-poi/{query}', function ($request, $response)  {
+//NLP
+
+$app->post('/map/nlp/', function ($request, $response)  {
     
     $test = new \Controllers\test;
     
@@ -195,6 +197,25 @@ $app->get('/map/search-poi/{query}', function ($request, $response)  {
     }
    
     $response->withJson($result, 200);
+    
+});
+
+// MAPS 
+$app->get('/map/search-poi/{query}', function ($request, $response)  {
+    
+    $test = new \Controllers\test;
+    $response->withJson("hola");
+    // try {
+        
+    //     $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+   
+    // } catch (\Unirest\Exception $e) {
+    
+    //     $response->withJson($e, 200);
+
+    // }
+   
+    // $response->withJson($result, 200);
     
 });
 
