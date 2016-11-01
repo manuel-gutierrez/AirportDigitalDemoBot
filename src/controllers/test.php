@@ -77,5 +77,14 @@ class test
 	}
 
 
+     public function locusLabsTestGetVenuesData($query) 
+	{	
+	 $map = new Map(); 
+	 $searchResults = $map->searchByQuery($query);	
+	 $result = $map->getVenues($searchResults->body->data);
+	 return $result;
+	}
+
+
 }
 

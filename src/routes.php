@@ -3,7 +3,7 @@
 use \Models\JsonResponse;
 
 
-// Test Routes 
+//_________Test Routes___________________
 $app->get('/', function ($request, $response)  {
     $response->withJson("hola", 200);
  });
@@ -156,12 +156,48 @@ $app->get('/map/test3/{id}', function ($request, $response)  {
     $response->withJson($result, 200);
     
 });
+//test 4 = test if a search return the venues data.
+$app->get('/map/test4/{query}', function ($request, $response)  {
+
+    
+    $test = new \Controllers\test;
+    
+    try {
+        
+        $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+   
+    } catch (\Unirest\Exception $e) {
+        echo $e->getMessage();
+        $response->withJson($result, 500);
+
+    }
+   
+    $response->withJson($result, 200);
+    
+});
 
 
 
+//_________ Endpoints Routes ____________________//
 
+$app->get('/map/search-poi/{query}', function ($request, $response)  {
 
+    
+    $test = new \Controllers\test;
+    
+    try {
+        
+        $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+   
+    } catch (\Unirest\Exception $e) {
+        echo $e->getMessage();
+        $response->withJson($result, 500);
 
+    }
+   
+    $response->withJson($result, 200);
+    
+});
 
 
 

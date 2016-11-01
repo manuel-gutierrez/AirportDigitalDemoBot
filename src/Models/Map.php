@@ -19,6 +19,8 @@ class Map
 	private $url;
 	private $configs;
 	private $request;
+	private $venue; 
+	private $venuesData; 
 
 	/**
 	* Constructor set request headers
@@ -106,6 +108,80 @@ class Map
 	 		return false;
 	 	}
 
+	}
+
+
+
+	/**
+	* Parse Single Venue Data
+	* @param  obj $venue
+	* @return array $venueDat   
+	*/
+
+	public function parseSingleVenue($venue)
+	{
+		if (!empty($venue)) {
+
+			if (!empty($venue->name)) { $this->venue["name"] = $venue->name;} else { $this->venue["name"]= " ";}	
+			if (!empty($venue->gate)) { $this->venue["gate"] = $venue->gate;} else { $this->venue["gate"]= " ";}
+			if (!empty($venue->hours)) {$this->venue["hours"]= $venue->hours;} else {$this->venue["hours"]= " ";}
+			if (!empty($venue->image)) { $this->venue["terminal"]= $venue->terminal;} else {$this->venue["terminal"]= " ";}
+
+			$this->venue["link"] = "bot.airportdigital.com/map?poi=".$venue->poiId;
+			
+			if (!empty($venue->image)) {
+			   $this->venue["image"]= "https://img.locuslabs.com/poi/".$venue->image; 
+			} else {
+			 $this->venue["image"]= "http://droidlessons.com/wp-content/themes/TechNews/images/img_not_available.jpg"; // Replace this image. 
+			}
+		return $this->venue;
+		}
+		return $this->venue["error"] = "Venue Object is empty";
+	}
+
+	/**
+	* Get Venue Data
+	* Get the venue relevant data.
+	* @param  array $id
+	* @return array $venue 
+	*/
+
+	public function getVenue($id)
+	{
+		$raw = $this->searchById($id); 
+		if ($this->validSearchById($raw)){
+			$this->venue = $this->parseSingleVenue($raw->body->data);
+			return $this->venue;
+		}
+		else
+		{
+			return $this->venue["error"] = "Venue info is not available";
+		}
+		
+	}
+
+	/**
+	* Get Venues Data
+	* Get an array with all the venues Id. 
+	* @param  array $venuesId
+	* @return array $venuesData   
+	*/
+
+	public function getVenues($venuesId)
+	{
+		$index = 1;
+		if (!empty($venuesId))
+		{
+			foreach ($venuesId as $value) {
+				$this->venuesData[$index] = $this->getVenue($value);
+				$index++;
+			}
+			return $this->venuesData; 
+		} 
+		else 
+		{
+			$this->venueData["error"] = "Venues Id array is empty";
+		}
 	}
 
 
