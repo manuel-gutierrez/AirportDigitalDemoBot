@@ -208,13 +208,14 @@ $app->post('/map/nlp/', function ($request, $response)  {
 });
 
 // MAPS 
-$app->post('/map/search-poi/{query}', function ($request, $response)  {
+$app->post('/map/search-poi/', function ($request, $response)  {
     
     $test = new test;
-    
+    $query = $request->getParsedBody();
+ 
      try {
         
-       $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+       $result = $test->locusLabsTestGetVenuesData($query["query"]);
    
     } catch (\Unirest\Exception $e) {
     
