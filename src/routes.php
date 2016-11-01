@@ -3,7 +3,11 @@
 use \Models\JsonResponse;
 
 
- // Test Routes 
+// Test Routes 
+$app->get('/', function ($request, $response)  {
+    $response->withJson("hola", 200);
+ });
+
 
 //  ---------- Wit Ai Tests -----------------
 $app->get('/httpcall/{text}', function ($request, $response)  {
