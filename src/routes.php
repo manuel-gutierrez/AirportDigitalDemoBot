@@ -1,8 +1,6 @@
 <?php
 // Routes
-use \Models\JsonResponse;
-use \Controllers\test;
-
+require_once __DIR__.'/../vendor/autoload.php';
 
 //_________Test Routes___________________
 $app->get('/', function ($request, $response)  {
@@ -208,7 +206,7 @@ $app->post('/map/nlp/', function ($request, $response)  {
 // MAPS 
 $app->get('/map/search-poi/{query}', function ($request, $response)  {
     
-    $test = new Controllers\test;
+    $test = new \Controllers\test;
     $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
     // try {
         

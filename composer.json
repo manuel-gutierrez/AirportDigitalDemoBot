@@ -25,12 +25,13 @@
         "phpunit/phpunit": ">=4.8 < 6.0"
     },
 
+
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Controllers\\": "src/Controllers",
-            "Models\\": "src/Models"
-        }
+            "Controllers\\": "/src/Controllers",
+            "Models\\": "/src/Models"
+        
     },
 	"scripts": {
         "start": "php -S 0.0.0.0:8080 -t public public/index.php",
