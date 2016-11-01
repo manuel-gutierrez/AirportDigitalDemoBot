@@ -211,7 +211,7 @@ $app->post('/map/nlp/', function ($request, $response)  {
 $app->post('/map/search-poi/', function ($request, $response)  {
     
     $test = new test;
-    $query = $request->getParsedBody();
+    $query = $request->getParams();
  
      try {
         
