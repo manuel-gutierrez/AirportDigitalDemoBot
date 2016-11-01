@@ -181,21 +181,20 @@ $app->get('/map/test4/{query}', function ($request, $response)  {
 //_________ Endpoints Routes ____________________//
 
 $app->get('/map/search-poi/{query}', function ($request, $response)  {
-    echo "hola";
     
-    // $test = new \Controllers\test;
+    $test = new \Controllers\test;
     
-    // try {
+    try {
         
-    //     $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+        $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
    
-    // } catch (\Unirest\Exception $e) {
+    } catch (\Unirest\Exception $e) {
     
-    //     $response->withJson($e, 200);
+        $response->withJson($e, 200);
 
-    // }
+    }
    
-    // $response->withJson($result, 200);
+    $response->withJson($result, 200);
     
 });
 
