@@ -26,8 +26,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Controllers\\": "src/Controllers/",
-            "Models\\": "src/Models/"
+            "Controllers\\": "src/",
+            "Models\\": "src/"
         }
     },
     "autoload-dev": {
