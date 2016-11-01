@@ -201,9 +201,9 @@ $app->post('/map/nlp/', function ($request, $response)  {
 });
 
 // MAPS 
-$app->get('/map/search-poi/{query}', function ($request, $response)  {
+$app->get('/map/search-poi/{query}', function ($request, $response) use ($app)  {
     
-    $test = new \Controllers\test;
+    // $test = new \Controllers\test;
     $response->withJson("hola");
     // try {
         
