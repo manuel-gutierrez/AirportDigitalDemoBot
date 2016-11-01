@@ -89,7 +89,7 @@ $app->get('/map/test0/{query}', function ($request, $response)  {
         
         $result = $test->locusLabsTestSearchByQuery($request->getAttribute('query'));
    
-    } catch (\Unirest\Exception $e) {
+    } catch (Unirest\Exception $e) {
         echo $e->getMessage();
         $response->withJson($result, 500);
 
@@ -208,7 +208,7 @@ $app->post('/map/nlp/', function ($request, $response)  {
 });
 
 // MAPS 
-$app->get('/map/search-poi/{query}', function ($request, $response)  {
+$app->post('/map/search-poi/{query}', function ($request, $response)  {
     
     $test = new test;
     
