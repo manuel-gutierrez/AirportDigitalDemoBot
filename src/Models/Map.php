@@ -1,6 +1,6 @@
 <?php
-namespace Models;
-use app;
+
+
 
 /**
 *  LocusLabs Map Integration -- Seattle
@@ -12,7 +12,7 @@ use app;
 *   -ParseSearchResults 
 */
 
-class Map 
+class Map
 {
 	
 	private $headers;
