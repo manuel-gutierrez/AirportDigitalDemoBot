@@ -176,6 +176,10 @@ $app->get('/map/test4/{query}', function ($request, $response)  {
     
 });
 
+$app->get('/debug', function ($request, $response)  {
+phpinfo();
+});
+
 
 
 //_________ Endpoints Routes ____________________//
@@ -201,9 +205,9 @@ $app->post('/map/nlp/', function ($request, $response)  {
 });
 
 // MAPS 
-$app->get('/map/search-poi/{query}', function ($request, $response) use ($app)  {
+$app->get('/map/search-poi/{query}', function ($request, $response)  {
     
-    $test = new \Controllers\test;
+    $test = new Controllers\test;
     $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
     // try {
         

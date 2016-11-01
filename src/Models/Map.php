@@ -1,6 +1,6 @@
 <?php
 namespace Models;
-
+use app;
 
 /**
 *  LocusLabs Map Integration -- Seattle
