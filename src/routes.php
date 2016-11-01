@@ -1,5 +1,5 @@
 <?php
-use \Controllers;
+use \Controllers\test;
 // Routes
 
 
@@ -80,7 +80,7 @@ $app->get('/nlp/test2/{text}', function ($request, $response)  {
 $app->get('/map/test0/{query}', function ($request, $response)  {
 
     
-    $test = new \Controllers\test;
+    $test = new test;
     
     try {
         
