@@ -1,6 +1,7 @@
 <?php
 // Routes
 use \Models\JsonResponse;
+use \Controllers\test;
 
 
 //_________Test Routes___________________
@@ -100,8 +101,8 @@ $app->get('/map/test0/{query}', function ($request, $response)  {
 //test 1 = test search by Id
 $app->get('/map/test1/{id}', function ($request, $response)  {
 
-    
-    $test = new \Controllers\test;
+
+    $test = new Controllers\test;
     
     try {
         
