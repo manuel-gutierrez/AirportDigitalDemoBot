@@ -148,8 +148,8 @@ $app->get('/map/test3/{id}', function ($request, $response)  {
         $result = $test->locusLabsTestValidSearchById($request->getAttribute('id'));
    
     } catch (\Unirest\Exception $e) {
-        echo $e->getMessage();
-        $response->withJson($result, 500);
+      
+        $response->withJson($e, 200);
 
     }
 
@@ -167,8 +167,8 @@ $app->get('/map/test4/{query}', function ($request, $response)  {
         $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
    
     } catch (\Unirest\Exception $e) {
-        echo $e->getMessage();
-        $response->withJson($result, 500);
+
+        $response->withJson($e, 200);
 
     }
    
@@ -190,8 +190,8 @@ $app->get('/map/search-poi/{query}', function ($request, $response)  {
         $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
    
     } catch (\Unirest\Exception $e) {
-        echo $e->getMessage();
-        $response->withJson($result, 500);
+    
+        $response->withJson($e, 200);
 
     }
    
