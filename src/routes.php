@@ -204,18 +204,18 @@ $app->post('/map/nlp/', function ($request, $response)  {
 $app->get('/map/search-poi/{query}', function ($request, $response) use ($app)  {
     
     $test = new \Controllers\test;
-    
-    try {
+    $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+    // try {
         
-        $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+       
    
-    } catch (\Unirest\Exception $e) {
+    // } catch (\Unirest\Exception $e) {
     
-        $response->withJson($e, 200);
+    //     $response->withJson($e, 200);
 
-    }
+    // }
    
-    $response->withJson($result, 200);
+   $response->withJson($result, 200);
     
 });
 
