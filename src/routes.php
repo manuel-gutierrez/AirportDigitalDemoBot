@@ -1,6 +1,7 @@
 <?php
+use \Controllers;
 // Routes
-require_once __DIR__.'/../vendor/autoload.php';
+
 
 //_________Test Routes___________________
 $app->get('/', function ($request, $response)  {
