@@ -127,7 +127,7 @@ class Map
 			if (!empty($venue->hours)) {$this->venue["hours"]= $venue->hours;} else {$this->venue["hours"]= " ";}
 			if (!empty($venue->image)) { $this->venue["terminal"]= $venue->terminal;} else {$this->venue["terminal"]= " ";}
 
-			$this->venue["link"] = "bot.airportdigital.com/map?poi=".$venue->poiId;
+			$this->venue["link"] = "bot.airportdigital.com/maps?poi=".$venue->poiId;
 			
 			if (!empty($venue->image)) {
 			   $this->venue["image"]= "https://img.locuslabs.com/poi/".$venue->image; 
