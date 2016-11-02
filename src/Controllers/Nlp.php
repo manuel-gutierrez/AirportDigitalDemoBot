@@ -42,7 +42,7 @@ class Nlp
 				break;
 			
 			default:
-				$flowName = "ChatWithAnAgent";
+				$flowName = "UnknownIntent";
 				break;
 		}
 		return $flowName;
@@ -65,7 +65,7 @@ class Nlp
 			return $data; 
 		} else 
 		{
-			$flow = "ChatWithAnAgent";
+			$flow = "UnknownIntent";
 			$parsedResult = $this->nlp->getImportantData($queryResult);
 			$data=array("flow"=>$flow, "data" => $parsedResult);
 			return $data; 
