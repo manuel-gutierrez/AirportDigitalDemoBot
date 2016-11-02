@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__. '/Controllers/test.php';
+require_once __DIR__ . '/Controllers/Nlp.php';
 
 // Routes
 
@@ -30,7 +31,7 @@ $app->get('/httpcall/{text}', function ($request, $response)  {
 $app->get('/nlp/test0/{text}', function ($request, $response)  {
 
     
-    $test = new \Controllers\test;
+    $test = new test;
     
     try {
         
@@ -47,7 +48,7 @@ $app->get('/nlp/test0/{text}', function ($request, $response)  {
 $app->get('/nlp/test1/{text}', function ($request, $response)  {
 
     
-    $test = new \Controllers\test;
+    $test = new test;
     
     try {
         
@@ -63,7 +64,7 @@ $app->get('/nlp/test1/{text}', function ($request, $response)  {
 $app->get('/nlp/test2/{text}', function ($request, $response)  {
 
     
-    $test = new \Controllers\test;
+    $test = new test;
     
     try {
         $result = $test->apiAiTestSuccessfullQuery($request->getAttribute('text'));
@@ -74,6 +75,44 @@ $app->get('/nlp/test2/{text}', function ($request, $response)  {
 
     }
 
+    $response->withJson($result, 200);
+    
+});
+
+// test 3 : Test a nlp request with language options : en and es 
+$app->post('/nlp/test3/', function ($request, $response)  {
+    
+    $test = new test;
+    $params = $request->getParams();
+
+    try {
+       $result =  $test->apiAiTestWithLanguage($params["query"],$params["lng"]);
+   
+    } catch (\Unirest\Exception $e) {
+    
+        $response->withJson($e, 200);
+
+    }
+   
+    $response->withJson($result, 200);
+    
+});
+
+// test 4 : Test a nlp returns the correct routing info
+$app->post('/nlp/test4/', function ($request, $response)  {
+    
+    $test = new test;
+    $params = $request->getParams();
+
+    try {
+       $result =  $test->nlpTestProcessQuery($params["query"],$params["lng"]);
+   
+    } catch (\Unirest\Exception $e) {
+    
+        $response->withJson($e, 200);
+
+    }
+   
     $response->withJson($result, 200);
     
 });
@@ -104,7 +143,7 @@ $app->get('/map/test0/{query}', function ($request, $response)  {
 $app->get('/map/test1/{id}', function ($request, $response)  {
 
 
-    $test = new Controllers\test;
+    $test = new test;
     
     try {
         
@@ -124,7 +163,7 @@ $app->get('/map/test1/{id}', function ($request, $response)  {
 $app->get('/map/test2/{query}', function ($request, $response)  {
 
     
-    $test = new \Controllers\test;
+    $test = new test;
     
     try {
         
@@ -144,7 +183,7 @@ $app->get('/map/test2/{query}', function ($request, $response)  {
 $app->get('/map/test3/{id}', function ($request, $response)  {
 
     
-    $test = new \Controllers\test;
+    $test = new test;
     
     try {
         
@@ -159,11 +198,12 @@ $app->get('/map/test3/{id}', function ($request, $response)  {
     $response->withJson($result, 200);
     
 });
+
 //test 4 = test if a search return the venues data.
 $app->get('/map/test4/{query}', function ($request, $response)  {
 
     
-    $test = new \Controllers\test;
+    $test = new test;
     
     try {
         
@@ -179,9 +219,7 @@ $app->get('/map/test4/{query}', function ($request, $response)  {
     
 });
 
-$app->get('/debug', function ($request, $response)  {
-phpinfo();
-});
+
 
 
 
@@ -189,15 +227,20 @@ phpinfo();
 
 //NLP
 
-$app->post('/map/nlp/', function ($request, $response)  {
+$app->post("/nlp/", function ($request, $response)  {
     
-    $test = new test;
+      //get the request parameters  
+      $params = $request->getParams();
+
+      //Create the object
+      $nlp = new Nlp($params["lng"]);
+
     
     try {
         
-        $result = $test->locusLabsTestGetVenuesData($request->getAttribute('query'));
+       $result = $nlp->processQuery($params["query"]);
    
-    } catch (\Unirest\Exception $e) {
+    } catch (\Exception $e) {
     
         $response->withJson($e, 200);
 
@@ -207,11 +250,13 @@ $app->post('/map/nlp/', function ($request, $response)  {
     
 });
 
+
 // MAPS 
 $app->post('/map/search-poi/', function ($request, $response)  {
     
     $test = new test;
     $query = $request->getParams();
+
  
      try {
         

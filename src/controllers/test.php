@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/../Models/ApiAiClient.php';
 require_once __DIR__ . '/../Models/Map.php';
+require_once __DIR__ . '/../Controllers/Nlp.php';
 
 
 /**
@@ -22,7 +23,7 @@ if (!class_exists('test')) {
   	// Api Api Ai Tests
   	 public function apiAiTestQuery($text) 
   	{	
-  	 $apiClient = new ApiAiClient("es"); 
+  	 $apiClient = new ApiAiClient("en"); 
   	 $response = $apiClient->doQuery($text); 
   	 return $response;
   	}
@@ -44,6 +45,19 @@ if (!class_exists('test')) {
   	 $response ["confidence"] =  $apiClient->getConfidence($aiResponse);	
   	 return $response;
   	}
+
+    public function apiAiTestWithLanguage($query,$language) 
+    { 
+     $apiClient = new ApiAiClient($language); 
+     $response = $apiClient->doQuery($query);
+     return $response;
+    }
+    public function nlpTestProcessQuery($query, $lng)
+    {
+      $nlp = new Nlp($lng);
+      $result = $nlp->processQuery($query);
+      return $result;  
+    }
 
   	// Locus Labs Tests
   	 public function locusLabsTestSearchByQuery($query) 
