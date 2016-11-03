@@ -40,6 +40,10 @@ class Nlp
 			case 'find_place_description':
 				$flowName = "SearchAPlace";
 				break;
+
+			case 'book_a_flight':
+				$flowName = "BookAFlight";
+				break;
 			
 			default:
 				$flowName = "UnknownIntent";
