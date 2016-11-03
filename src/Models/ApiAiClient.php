@@ -106,7 +106,7 @@ class ApiAiClient
 			$confidence = $this->getConfidence($aiResponse);
 			$params= $this->getParameters($aiResponse);
 			$emptyParams = $this->paramsAreEmpty($params);
-			if ($action != "input.unknown" && $confidence > "0.7"  && !$emptyParams ) {
+			if ($action != "input.unknown" && $confidence > "0.7"  ) {
 				return $sucess = true;
 			}  else {
 				return $sucess = false;
