@@ -126,8 +126,11 @@ class Map
 			if (!empty($venue->gate)) { $this->venue["gate"] = $venue->gate;} else { $this->venue["gate"]= " ";}
 			if (!empty($venue->hours)) {$this->venue["hours"]= $venue->hours;} else {$this->venue["hours"]= " ";}
 			if (!empty($venue->image)) { $this->venue["terminal"]= $venue->terminal;} else {$this->venue["terminal"]= " ";}
-
-			$this->venue["link"] = "bot.airportdigital.com/maps/seattle-map.html?poi=".$venue->poiId;
+			// Add buttons as an Array 
+			$this->venue["button"][1]["text"] = "Go to Map";
+			$this->venue["button"][1]["link"] = "bot.airportdigital.com/maps/seattle-map.html?poi=".$venue->poiId;
+			$this->venue["button"][2]["text"] = "Order Now";
+			$this->venue["button"][2]["link"] = "http://google.com";
 			
 			if (!empty($venue->image)) {
 			   $this->venue["image"]= "https://img.locuslabs.com/poi/".$venue->image; 
