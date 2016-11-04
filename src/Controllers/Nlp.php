@@ -44,6 +44,9 @@ class Nlp
 			case 'book_a_flight':
 				$flowName = "BookAFlight";
 				break;
+			case 'lng_spanish':
+				$flowName = "ChangeLanguage";
+				break;
 			
 			default:
 				$flowName = "UnknownIntent";
