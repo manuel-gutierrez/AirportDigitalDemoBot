@@ -51,10 +51,10 @@ class Nlp
 				$flowName = "ChangeLanguage";
 				break;
 			case 'salute':
-				$flowName = "ChangeLanguage";
+				$flowName = "Salute";
 				break;
 			case 'saludo':
-				$flowName = "ChangeLanguage";
+				$flowName = "Saludo";
 				break;
 			
 			default:
