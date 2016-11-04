@@ -50,6 +50,12 @@ class Nlp
 			case 'lng_english':
 				$flowName = "ChangeLanguage";
 				break;
+			case 'salute':
+				$flowName = "ChangeLanguage";
+				break;
+			case 'saludo':
+				$flowName = "ChangeLanguage";
+				break;
 			
 			default:
 				$flowName = "UnknownIntent";
