@@ -34,9 +34,13 @@ class MapController
 	public function getElements($venues)
 	{
 		if (!isset($venues["error"])) {
+
 			foreach ($venues as $key => $value) {
 						$venue = $this->parseSingleVenue($value);
 						$elements[$key] =  $venue;
+						if ($key == 9){
+							return $elements;
+						}
 					}
 			return $elements ;
 		} else
@@ -69,7 +73,7 @@ class MapController
 		    $button_2_data = array(
 				"type" => "web_url",
 				"url" => "http://www.google.com", 
-				"title" => "Book Now"
+				"title" => "Order Now"
 		    );
 
 		    $button1 = $fbCard->parseButton($button_1_data,"tall");
