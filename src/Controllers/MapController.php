@@ -68,12 +68,12 @@ class MapController
 
 		    $button_2_data = array(
 				"type" => "web_url",
-				"url" => "http://bot.airportdigital.com/maps/seattle-map.html?poi=".$venue->poiId, 
+				"url" => "http://www.google.com", 
 				"title" => "Book Now"
 		    );
 
 		    $button1 = $fbCard->parseButton($button_1_data,"tall");
-		    $button2 = $fbCard->parseButton($button_1_data,"tall");
+		    $button2 = $fbCard->parseButton($button_2_data,"tall");
 		    $buttons = array($button1,$button2);
 
 		    $element = array(
