@@ -85,7 +85,12 @@ class MapController
 		    );
 
 			if (!empty($venue->name)) {
-			 $element["title"] = $venue->name." @ ". $venue->gate;
+			 if (!empty($venue->gate)) {
+			 	$element["title"] = $venue->name." @ ". $venue->gate;
+			 } else {
+			 		$element["title"] = $venue->name;
+			 }
+			 
 			} else
 			{
 			 $element["title"]= "Data Not Available";
