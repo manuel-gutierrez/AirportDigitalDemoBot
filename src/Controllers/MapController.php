@@ -84,7 +84,7 @@ class MapController
 				"buttons" => $buttons
 		    );
 
-			if (!empty($venue->name) && !empty($venue->gate)) {
+			if (!empty($venue->name)) {
 			 $element["title"] = $venue->name." @ ". $venue->gate;
 			} else
 			{
