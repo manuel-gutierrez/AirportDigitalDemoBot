@@ -1,7 +1,10 @@
 <?php 
 require_once __DIR__ . '/../Models/ApiAiClient.php';
 require_once __DIR__ . '/../Models/Map.php';
+require_once __DIR__ . '/../Models/FacebookTemplate.php';
 require_once __DIR__ . '/../Controllers/Nlp.php';
+require_once __DIR__ . '/../Controllers/MapController.php';
+
 
 
 /**
@@ -90,14 +93,37 @@ if (!class_exists('test')) {
   	}
 
 
-       public function locusLabsTestGetVenuesData($query) 
+      public function locusLabsTestGetVenuesData($query) 
   	{	
-  	 $map = new Map(); 
-  	 $searchResults = $map->searchByQuery($query);	
-  	 $result = $map->getVenues($searchResults->body->data);
-  	 return $result;
+  	 $map = new MapController;
+     $venues = $map->searchVenues($query);
+  	 return $venues;
   	}
 
+    // Facebook Templates test 
+
+     public function facebookTemplateTestcard() 
+    { 
+     $card = new FacebookTemplate; 
+     $result = $card->card();
+     return $result;
+    }
+
+    public function facebookTemplateTestElements($query) 
+    { 
+     $map = new MapController;
+     $venues = $map->searchVenues($query);
+     $elements = $map->getElements($venues);
+     return $elements;
+    }
+    public function facebookTemplateTestVenueCard($query) 
+    { 
+     $map = new MapController;
+     $venues = $map->searchVenues($query);
+     $elements = $map->getElements($venues);
+     $card = $map->buildTemplate($elements);
+     return $card;
+    }
 
   }
 

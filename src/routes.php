@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__. '/Controllers/test.php';
 require_once __DIR__ . '/Controllers/Nlp.php';
+require_once __DIR__ . '/Controllers/MapController.php';
 
 // Routes
 
@@ -219,8 +220,47 @@ $app->get('/map/test4/{query}', function ($request, $response)  {
     
 });
 
+//_________ Facebook Templates tests  ____________________//
 
+//test 0 = test card basic structure.
+$app->get('/fb/test0/', function ($request, $response)  {
 
+    
+    $test = new test;
+    
+    try {
+        
+        $result = $test->facebookTemplateTestcard();
+   
+    } catch (\Unirest\Exception $e) {
+
+        $response->withJson($e, 200);
+
+    }
+   
+    $response->withJson($result, 200);
+    
+});
+
+//test 1 = test a card is parsed correctly
+$app->get('/fb/test1/{query}', function ($request, $response)  {
+
+    
+    $test = new test;
+    $query = $request->getAttribute('query');
+    try {
+        
+        $result = $test->facebookTemplateTestVenueCard($query);
+   
+    } catch (\Unirest\Exception $e) {
+
+        $response->withJson($e, 200);
+
+    }
+   
+    $response->withJson($result, 200);
+    
+});
 
 
 //_________ Endpoints Routes ____________________//
@@ -254,13 +294,13 @@ $app->post("/nlp/", function ($request, $response)  {
 // MAPS 
 $app->post('/map/search-poi/', function ($request, $response)  {
     
-    $test = new test;
+    $map = new MapController;
     $query = $request->getParams();
 
  
      try {
         
-       $result = $test->locusLabsTestGetVenuesData($query["query"]);
+       $result = $map->search($query["query"]);
    
     } catch (\Unirest\Exception $e) {
     
@@ -271,6 +311,9 @@ $app->post('/map/search-poi/', function ($request, $response)  {
    $response->withJson($result, 200);
     
 });
+
+
+
 
 
 

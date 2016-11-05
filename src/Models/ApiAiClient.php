@@ -94,7 +94,7 @@ class ApiAiClient
 	/**
 	* Condition for a succesfull intent 
 	* Action !="input.unknown"
-	* Confidence > 0.9  
+	* Confidence > 0.9  // Chage it to 0.7 afeter several 
 	* Params !empty // deleted to ask them before..
 	* @param  array $aiResponse 
 	* @return bool  $sucess
