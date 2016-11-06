@@ -50,6 +50,9 @@ class Nlp
 			case 'lng_english':
 				$flowName = "ChangeLanguage";
 				break;
+			case 'flight_status':
+				$flowName = "FlightStatus";
+				break;
 			case 'salute':
 				$flowName = "Salute";
 				break;
