@@ -103,7 +103,7 @@ class MapController
 		    if (!empty($venue->terminal) && !empty($venue->hours)) {
 			
 			    if (!empty($venue->gate)) {
-			    	$element["subtitle"] = $venue->terminal." | ". $venue->gate.'<br> Open '. $venue->hours;
+			    	$element["subtitle"] = $venue->terminal." | ". $venue->gate.' | Open '. $venue->hours;
 			    } else {
 			    		$element["subtitle"] = $venue->terminal." | Open ". $venue->hours;
 		   		 }
