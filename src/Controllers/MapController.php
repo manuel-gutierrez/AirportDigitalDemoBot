@@ -76,7 +76,7 @@ class MapController
 				"title" => "Order Now"
 		    );
 
-		    $button1 = $fbCard->parseButton($button_1_data,"tall");
+		    $button1 = $fbCard->parseButton($button_1_data);
 		    $button2 = $fbCard->parseButton($button_2_data,"tall");
 		    $buttons = array($button1,$button2);
 
