@@ -67,7 +67,7 @@ class FacebookTemplate
 			"type" => $params["type"],
 			"url" => $params["url"], 
 			"title" => $params["title"],
-			"messenger_extensions"=> true
+			
 		);
 
 		if ($webview_height_ratio) {
