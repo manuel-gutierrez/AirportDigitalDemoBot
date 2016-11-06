@@ -66,7 +66,8 @@ class FacebookTemplate
 		$this->button = array(
 			"type" => $params["type"],
 			"url" => $params["url"], 
-			"title" => $params["title"]
+			"title" => $params["title"],
+			"messenger_extensions"=> true
 		);
 
 		if ($webview_height_ratio) {
