@@ -53,8 +53,8 @@ class Nlp
 			case 'flight_status':
 				$flowName = "FlightStatus";
 				break;
-			case 'suscribe_to_alerts':
-				$flowName = "FlightStatus";
+			case 'subscribe_to_alerts':
+				$flowName = "SubscribeToAlerts";
 				break;
 			case 'salute':
 				$flowName = "Salute";
