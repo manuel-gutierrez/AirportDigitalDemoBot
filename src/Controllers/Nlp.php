@@ -53,6 +53,9 @@ class Nlp
 			case 'flight_status':
 				$flowName = "FlightStatus";
 				break;
+			case 'chat_with_agent':
+				$flowName = "UnknownIntent";
+				break;
 			case 'subscribe_to_alerts':
 				$flowName = "SubscribeToAlerts";
 				break;
