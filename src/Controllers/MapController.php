@@ -72,7 +72,7 @@ class MapController
 
 		    $button_2_data = array(
 				"type" => "web_url",
-				"url" => "http://www.google.com", 
+				"url" => "http://bot.airportdigital.com/order/", 
 				"title" => "Order Now"
 		    );
 
