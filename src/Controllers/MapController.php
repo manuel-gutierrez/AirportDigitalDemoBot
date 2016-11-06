@@ -101,11 +101,15 @@ class MapController
 			}	
 
 		    if (!empty($venue->terminal) && !empty($venue->hours)) {
-			 $element["subtitle"] = $venue->terminal." -- ". $venue->hours;
-			} else
-			{
-			 $element["subtitle"]= "Hours and Gate Data Not Available";
-			}
+			
+			    if (!empty($venue->gate)) {
+			    	$element["subtitle"] = $venue->terminal." | ". $venue->gate."\n Open ". $venue->hours;
+			    } else {
+			    		$element["subtitle"] = $venue->terminal." | Open ". $venue->hours;
+		   		 }
+		   	}
+
+
 
 			if (!empty($venue->image)) {
 			   $element["image_url"]= "https://img.locuslabs.com/poi/".$venue->image; 
