@@ -59,6 +59,9 @@ class Nlp
 			case 'subscribe_to_alerts':
 				$flowName = "SubscribeToAlerts";
 				break;
+			case 'directions':
+				$flowName = "Directions";
+				break;
 			case 'salute':
 				$flowName = "Salute";
 				break;
